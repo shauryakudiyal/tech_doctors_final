@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "197401113842",
+    "firebase_url": "https://tech-doctors.firebaseio.com",
+    "project_id": "tech-doctors",
+    "storage_bucket": "tech-doctors.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197401113842:android:3dc48bccbdf7ba37060c6b",
+        "android_client_info": {
+          "package_name": "com.skapps.tech_doctors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197401113842-k2esso14aih4j3n472m95sl4kulkmsu2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxR5OUHKjRu-alt_UPSwYCEmXhIPLTX1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197401113842-k2esso14aih4j3n472m95sl4kulkmsu2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "197401113842-riohn7d7iiqnjr6cv9vtu3re8o2asjs3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.skapps.tech-doctors"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
