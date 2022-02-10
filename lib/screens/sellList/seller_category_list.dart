@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:tech_doctors/screens/categories/subCat_screen.dart';
+import 'package:tech_doctors/screens/sellList/seller_subCat_screen.dart';
 import 'package:tech_doctors/services/firebase_sevices.dart';
 
-class CategoryListScreen extends StatelessWidget {
-  static const String id = 'category list screen';
+class SellerCategory extends StatelessWidget {
+  static const String id = 'seller-category-list-screen';
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class CategoryListScreen extends StatelessWidget {
         shape: Border(bottom: BorderSide(color: Colors.grey),),
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Colors.black),
-        title: Text('Categories',style: TextStyle(color: Colors.black,),),
+        title: Text('Choose Categories',style: TextStyle(color: Colors.black,),),
       ),
         body: Container(
           child: FutureBuilder<QuerySnapshot>(
@@ -45,11 +46,11 @@ class CategoryListScreen extends StatelessWidget {
                             if(doc['subCat']==null){
                               return print('no sub category');
                             }
-                            Navigator.pushNamed(context, SubCatList.id, arguments: doc);
+                            Navigator.pushNamed(context, SellerSubCatList.id, arguments: doc);
                           },
                           leading: Image.network(doc['image'], width: 40,),
                           title: Text(doc['catName'],style: TextStyle(fontSize: 15),),
-                          trailing: Icon(Icons.arrow_forward_ios,size: 12,),
+                          trailing: doc['subCat']==null? null : Icon(Icons.arrow_forward_ios,size: 12,),
                         ),
 
                       );

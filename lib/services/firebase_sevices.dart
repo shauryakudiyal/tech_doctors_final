@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:tech_doctors/screens/home_screen.dart';
+import 'package:tech_doctors/screens/main_screen.dart';
 
 class FirebaseServices{
 
@@ -16,7 +17,7 @@ class FirebaseServices{
     return users
         .doc(user.uid)
         .update(data)
-        .then((value) => Navigator.pushReplacementNamed(context, HomeScreen.id))
+        .then((value) => Navigator.pushReplacementNamed(context, MainScreen.id))
         .catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

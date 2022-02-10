@@ -7,6 +7,7 @@ import 'package:legacy_progress_dialog/legacy_progress_dialog.dart';
 import 'package:location/location.dart';
 import 'package:tech_doctors/screens/home_screen.dart';
 import 'package:tech_doctors/screens/login_screen.dart';
+import 'package:tech_doctors/screens/main_screen.dart';
 import 'package:tech_doctors/services/firebase_sevices.dart';
 
 class LocationScreen extends StatefulWidget {
@@ -65,6 +66,7 @@ class _LocationScreenState extends State<LocationScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     if(widget.locationChanging==null){
       _services.users.doc(_services.user.uid).get().then((DocumentSnapshot document){
         if(document.exists)
@@ -74,24 +76,27 @@ class _LocationScreenState extends State<LocationScreen> {
           {
             setState(() {
               _isloading=true;
-              Navigator.pushReplacementNamed(context, HomeScreen.id);
+              Navigator.pushReplacementNamed(context, MainScreen.id);
             });
+
           }
           else
           {
             setState(() {
               _isloading=false;
-              Navigator.pushNamed(context, HomeScreen.id);
+              Navigator.pushNamed(context, MainScreen.id);
             });
           }
         }
       });
+
     }else{
       setState(() {
         _isloading=false;
       });
 
     }
+
 
     ProgressDialog progressDialog = ProgressDialog(
       context: context,
@@ -212,7 +217,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                         }, context
                                         ).then((value) {
                                           progressDialog.dismiss();
-                                        Navigator.pushReplacementNamed(context, HomeScreen.id);
+                                        Navigator.pushReplacementNamed(context, MainScreen.id);
                                         });
                                       }
                                   });

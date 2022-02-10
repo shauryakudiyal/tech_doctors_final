@@ -9,6 +9,9 @@ import 'package:tech_doctors/screens/home_screen.dart';
 import 'package:tech_doctors/screens/location_screen.dart';
 import 'package:tech_doctors/screens/login_screen.dart';
 import 'package:tech_doctors/screens/authentications/phone_auth_screen.dart';
+import 'package:tech_doctors/screens/main_screen.dart';
+import 'package:tech_doctors/screens/sellList/seller_category_list.dart';
+import 'package:tech_doctors/screens/sellList/seller_subCat_screen.dart';
 import 'package:tech_doctors/screens/splash_screen.dart';
 
 void main() async {
@@ -36,6 +39,10 @@ class MyApp extends StatelessWidget {
         ResetPasswordScreen.id:(context) => ResetPasswordScreen(),
         CategoryListScreen.id:(context) => CategoryListScreen(),
         SubCatList.id:(context) => SubCatList(),
+        SellerCategory.id:(context) => SellerCategory(),
+        SellerSubCatList.id:(context) => SellerSubCatList(),
+        MainScreen.id:(context) => MainScreen(),
+
 
 
       },
