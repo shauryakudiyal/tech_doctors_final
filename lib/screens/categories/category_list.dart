@@ -9,6 +9,8 @@ class CategoryListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+
+
     FirebaseServices _service = FirebaseServices();
 
     return Scaffold(
@@ -40,7 +42,10 @@ class CategoryListScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: ListTile(
                           onTap: (){
-                            Navigator.pushNamed(context, SubCatList.id);
+                            if(doc['subCat']==null){
+                              return print('no sub category');
+                            }
+                            Navigator.pushNamed(context, SubCatList.id, arguments: doc);
                           },
                           leading: Image.network(doc['image'], width: 40,),
                           title: Text(doc['catName'],style: TextStyle(fontSize: 15),),

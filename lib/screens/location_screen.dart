@@ -11,6 +11,10 @@ import 'package:tech_doctors/services/firebase_sevices.dart';
 
 class LocationScreen extends StatefulWidget {
   static const String id = 'location-screen';
+
+  final bool locationChanging;
+  LocationScreen({this.locationChanging});
+
   @override
   _LocationScreenState createState() => _LocationScreenState();
 }
@@ -61,26 +65,34 @@ class _LocationScreenState extends State<LocationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _services.users.doc(_services.user.uid).get().then((DocumentSnapshot document){
-if(document.exists)
-  {
-    //location already updated.
-    if(document['address'] !=null)
-      {
-        setState(() {
-          _isloading=true;
-          Navigator.pushReplacementNamed(context, HomeScreen.id);
-        });
-      }
-    else
-      {
-        setState(() {
-          _isloading=false;
-          Navigator.pushNamed(context, HomeScreen.id);
-        });
-      }
-  }
-    });
+    if(widget.locationChanging==null){
+      _services.users.doc(_services.user.uid).get().then((DocumentSnapshot document){
+        if(document.exists)
+        {
+          //location already updated.
+          if(document['address'] !=null)
+          {
+            setState(() {
+              _isloading=true;
+              Navigator.pushReplacementNamed(context, HomeScreen.id);
+            });
+          }
+          else
+          {
+            setState(() {
+              _isloading=false;
+              Navigator.pushNamed(context, HomeScreen.id);
+            });
+          }
+        }
+      });
+    }else{
+      setState(() {
+        _isloading=false;
+      });
+
+    }
+
     ProgressDialog progressDialog = ProgressDialog(
       context: context,
       progressIndicatorColor: Colors.deepPurple,
