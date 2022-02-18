@@ -74,18 +74,21 @@ class _LocationScreenState extends State<LocationScreen> {
           //location already updated.
           if(document['address'] !=null)
           {
-            setState(() {
-              _isloading=true;
+            if(mounted){
+              setState(() {
+                _isloading=true;
+              });
               Navigator.pushReplacementNamed(context, MainScreen.id);
-            });
+
+            }
+
 
           }
           else
           {
             setState(() {
               _isloading=false;
-              Navigator.pushNamed(context, MainScreen.id);
-            });
+              });
           }
         }
       });

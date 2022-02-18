@@ -1,5 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tech_doctors/form/seller_mobile_form.dart';
+import 'package:tech_doctors/provider/speaker_provider.dart';
 import 'package:tech_doctors/screens/authentications/email_auth.dart';
 import 'package:tech_doctors/screens/authentications/email_verification_screen.dart';
 import 'package:tech_doctors/screens/authentications/forget_screen.dart';
@@ -17,7 +20,14 @@ import 'package:tech_doctors/screens/splash_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  Provider.debugCheckInvalidValueType = null;
+  runApp(
+
+    MultiProvider(providers: [
+      Provider(create: (_) => CategoryProvider()),
+
+    ],child: MyApp(),
+    ));
 }
 
 class MyApp extends StatelessWidget {
@@ -42,6 +52,8 @@ class MyApp extends StatelessWidget {
         SellerCategory.id:(context) => SellerCategory(),
         SellerSubCatList.id:(context) => SellerSubCatList(),
         MainScreen.id:(context) => MainScreen(),
+        SellerMobileForm.id:(context) => SellerMobileForm(),
+
 
 
 

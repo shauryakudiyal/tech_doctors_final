@@ -1,5 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tech_doctors/form/seller_mobile_form.dart';
+import 'package:tech_doctors/provider/speaker_provider.dart';
 import 'package:tech_doctors/screens/categories/subCat_screen.dart';
 import 'package:tech_doctors/screens/sellList/seller_subCat_screen.dart';
 import 'package:tech_doctors/services/firebase_sevices.dart';
@@ -11,7 +14,7 @@ class SellerCategory extends StatelessWidget {
   Widget build(BuildContext context) {
 
 
-
+    var _catProvider = Provider.of<CategoryProvider>(context);
     FirebaseServices _service = FirebaseServices();
 
     return Scaffold(
@@ -43,8 +46,10 @@ class SellerCategory extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: ListTile(
                           onTap: (){
-                            if(doc['subCat']==null){
-                              return print('no sub category');
+                            _catProvider.getCategory(doc['catName']);
+                            _catProvider.getCatSnapshot(doc);
+                            if(doc['catName']=='Speaker'){
+                              return Navigator.pushNamed(context, SellerMobileForm.id);
                             }
                             Navigator.pushNamed(context, SellerSubCatList.id, arguments: doc);
                           },
